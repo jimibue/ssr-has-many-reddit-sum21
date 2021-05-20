@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  get '/all', to:'subs#all'
+
   get '/tacos', to:'subs#tacos'
 end

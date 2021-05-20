@@ -43,6 +43,14 @@ class SubsController < ApplicationController
       redirect_to root_path
     end
 
+    def all
+       comments = Comment.all
+       topics = Comment.all
+       subs = Sub.all
+       sum = 1 + 1
+       render component: "All", props:{comments: comments, topics:topics, subs:subs, sum:sum }
+    end
+
     def tacos
         render component: "Subs"
     end

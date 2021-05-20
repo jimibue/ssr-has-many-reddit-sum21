@@ -7,7 +7,7 @@ class TopicsController < ApplicationController
     end
 
     def show
-        render component: "Topic", props: {sub: @sub, topic: @topic}
+        render component: "Topic", props: {sub: @sub, topic: @topic, comments: @topic.comments}
     end
     def create
         topic = @sub.topics.new(topic_params)

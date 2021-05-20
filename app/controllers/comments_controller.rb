@@ -11,6 +11,20 @@ class CommentsController < ApplicationController
         render component: "Comment", props: {topic: @topic, comment: @comment}
     end
 
+    def new 
+        render component: "CommentNew", props: {topic: @topic}
+    end
+
+    def create
+        comment = @topic.comments.new(comment_params)
+        if (comment.save)
+            redirect_to topic_comments_path(@topic.id)	
+        else
+            # later
+        end
+    end
+
+
     def edit
         render component: "CommentEdit", props: {topic: @topic, comment: @comment}
     end
@@ -21,6 +35,11 @@ class CommentsController < ApplicationController
         else
             # later
         end
+    end
+
+    def destroy
+      @comment.destroy
+      redirect_to topic_comments_path(@topic.id)	
     end
 
     private
