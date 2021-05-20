@@ -11,6 +11,8 @@ const Topic = (props) => {
             <h1>Topic Info</h1>
             <h1>{topic.name}</h1>
             <p>{topic.body}</p>
+
+            <a href={`/topics/${topic.id}/comments`}>view comments page (ie index)</a>
         </div>
     )
 }
