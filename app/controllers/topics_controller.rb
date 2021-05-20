@@ -25,11 +25,20 @@ class TopicsController < ApplicationController
     end
 
     def edit
-        render component: 'TopicEdit', props: {sub: @sub}
+        render component: 'TopicEdit', props: {sub: @sub, topic: @topic}
+    end
+
+    def update
+       if @topic.update(topic_params)
+         redirect_to sub_topics_path(@sub.id)
+       else
+         #TODO Deal with this use case
+       end
     end
 
     def destroy
         @topic.destroy
+        redirect_to sub_topics_path(@sub.id)
         # redirect_to look at this tommorrow
     end
 
